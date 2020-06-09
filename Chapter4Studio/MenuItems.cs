@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chapter4Studio
 {
-    class MenuItems
+    public class MenuItems
     {       
         public double Price { get; set; }
         public string Description { get; set; }
@@ -17,6 +17,34 @@ namespace Chapter4Studio
             Description = description;
             Category = category;
             IsNew = isNew;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(Category + " : " + Description + " : " + Price + "$");
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj)
+            {
+                return true;
+            }
+            if (obj == null)
+            {
+                return false;
+            }
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+            MenuItems itemObj = obj as MenuItems;
+            return Description == itemObj.Description;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
